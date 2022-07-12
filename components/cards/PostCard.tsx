@@ -9,12 +9,12 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-import Image from "../Image";
+// import Image from "../Image";
 import { useRouter } from "next/router";
 
 import { getUrlImage, formatDatePublic } from "../../helpers/commonFuction";
 import { colors } from "../../styles/theme";
-
+import Image from 'next/image'
 interface Props extends FlexProps {
   alt: string;
   idArticle: string;
@@ -48,7 +48,7 @@ const PostCard = ({ idArticle, article }: Props) => {
         rounded={{ lg: "lg" }}
         w="full"
       >
-        <Box
+        {/* <Box
           w={{ lg: "100%" }}
           display={{ base: "none", lg: "flex" }}
           style={{
@@ -66,15 +66,18 @@ const PostCard = ({ idArticle, article }: Props) => {
           h={{ base: "350px", lg: "660px" }}
           pl={{ base: "0px", lg: "80px" }}
           pr={{ base: "0px", lg: "80px" }}
-        ></Box>
+        ></Box> */}
+        <Box style={{ width: '100%', height: '660px', position: 'relative' }} display={{ base: "none", lg: "flex" }}>  <Image
+          src={getUrlImage(article.hero_desktop.url)}
 
-        <Box w="100%" h="40vh" display={{ base: "flex", lg: "none" }}>
+          layout='fill'
+        /></Box>
+
+
+        <Box style={{ width: '100%', height: '40vh', position: 'relative' }} display={{ base: "flex", lg: "none" }} position='relative'>
           <Image
-            objectFit="fill"
+            layout='fill'
             src={getUrlImage(article.hero_mobile.url)}
-            // maxHeight={"640px"}
-            //
-            w="100%"
           />
         </Box>
 

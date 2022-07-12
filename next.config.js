@@ -47,4 +47,7 @@ module.exports = {
         ignoreBuildErrors: true,
     },
     staticPageGenerationTimeout: 1000,
+    images: {
+        domains: ['playitright.s3-ap-southeast-1.amazonaws.com'],
+    },
 };
