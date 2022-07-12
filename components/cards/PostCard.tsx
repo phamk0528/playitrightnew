@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import { getUrlImage, formatDatePublic } from "../../helpers/commonFuction";
 import { colors } from "../../styles/theme";
 import Image from 'next/image'
-import useWindowSize from '../../../hooks/useWindowSize';
+import useWindowSize from '../../hooks/useWindowSize';
 
 interface Props extends FlexProps {
   alt: string;
