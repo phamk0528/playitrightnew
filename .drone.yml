@@ -1,0 +1,110 @@
+############################################################################# 1st pipeline
+kind: pipeline
+type: kubernetes
+name: bcxstudio-process
+
+steps:
+- name: i12-web-frontend-image
+  image: plugins/docker
+  settings:
+    registry: kllsgsgpdvfomscr01.azurecr.io
+    username:
+      from_secret: Username
+    password:
+      from_secret: Password
+    repo: kllsgsgpdvfomscr01.azurecr.io/i12-web-frontend
+    tags: ${DRONE_TAG}
+    dockerfile: Dockerfile
+  when:
+    event:
+    - tag
+    
+- name: i12-web-frontend-status
+  image: kllsgsgpdvfomscr01.azurecr.io/kubectl-helm:latest
+  settings:
+    kubernetes_server:
+      from_secret: k8s_server
+    kubernetes_cert:
+      from_secret: k8s_cert
+    kubernetes_token:
+      from_secret: k8s_token
+  commands:
+    - kubectl get deployment i12-web-frontend
+  when:
+    event:
+    - tag
+
+- name: 1st-i12-web-frontend-deploy
+  image: kllsgsgpdvfomscr01.azurecr.io/kubectl-helm:latest
+  settings:
+    kubernetes_server:
+      from_secret: k8s_server
+    kubernetes_cert:
+      from_secret: k8s_cert
+    kubernetes_token:
+      from_secret: k8s_token
+  commands:
+    - kubectl create -f k8s/i12-web-frontend-deployment.yaml
+    - kubectl rollout status deployment i12-web-frontend
+  when:
+    status:
+    - failure
+    event:
+    - tag
+
+- name: updated-i12-web-frontend-deploy
+  image: kllsgsgpdvfomscr01.azurecr.io/kubectl-helm:latest
+  settings:
+    kubernetes_server:
+      from_secret: k8s_server
+    kubernetes_cert:
+      from_secret: k8s_cert
+    kubernetes_token:
+      from_secret: k8s_token
+  commands:
+    - kubectl set image deployment i12-web-frontend i12-web-frontend=kllsgsgpdvfomscr01.azurecr.io/i12-web-frontend:${DRONE_TAG} --record
+  when:
+    event:
+    - tag
+---
+############################################################################# 2nd pipeline
+kind: pipeline
+type: kubernetes
+name: rollback
+
+steps:
+- name: i12-web-frontend-rollout-status
+  image: kllsgsgpdvfomscr01.azurecr.io/kubectl-helm:latest
+  settings:
+    kubernetes_server:
+      from_secret: k8s_server
+    kubernetes_cert:
+      from_secret: k8s_cert
+    kubernetes_token:
+      from_secret: k8s_token
+  commands:
+    - kubectl rollout status deployment i12-web-frontend
+  when:
+    event:
+    - tag
+
+- name: i12-web-frontend-deploy-rollback
+  image: kllsgsgpdvfomscr01.azurecr.io/kubectl-helm:latest
+  settings:
+    kubernetes_server:
+      from_secret: k8s_server
+    kubernetes_cert:
+      from_secret: k8s_cert
+    kubernetes_token:
+      from_secret: k8s_token
+  commands:
+    - kubectl rollout undo deployment i12-web-frontend
+  when:
+    status:
+    - failure
+    event:
+    - tag
+    
+depends_on:
+- bcxstudio-process
+
