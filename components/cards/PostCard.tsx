@@ -15,8 +15,6 @@ import { useRouter } from "next/router";
 import { getUrlImage, formatDatePublic } from "../../helpers/commonFuction";
 import { colors } from "../../styles/theme";
 import Image from 'next/image'
-import useWindowSize from '../../hooks/useWindowSize';
-
 interface Props extends FlexProps {
   alt: string;
   idArticle: string;
@@ -30,7 +28,7 @@ const PostCard = ({ idArticle, article }: Props) => {
     window.open(idArticle, "_blank");
 
   };
-  const screenSize = useWindowSize();
+
   return (
     <Flex
       bg={useColorModeValue("white", "gray.800")}
@@ -50,7 +48,7 @@ const PostCard = ({ idArticle, article }: Props) => {
         rounded={{ lg: "lg" }}
         w="full"
       >
-        {/* <Box
+        <Box
           w={{ lg: "100%" }}
           display={{ base: "none", lg: "flex" }}
           style={{
@@ -68,18 +66,23 @@ const PostCard = ({ idArticle, article }: Props) => {
           h={{ base: "350px", lg: "660px" }}
           pl={{ base: "0px", lg: "80px" }}
           pr={{ base: "0px", lg: "80px" }}
-        ></Box> */}
+        ></Box>
 
-        <Box style={{ width: '100%', height: screenSize.width >= 750 ? '660px' : '40vh', position: 'relative' }} display={{ base: "none", lg: "flex" }}>  <Image
-          src={getUrlImage(screenSize.width >= 750 ? article.hero_desktop.url : article.hero_mobile.url)}
+        <Image
+          src={getUrlImage(article.hero_desktop.url)}
+          layout="fill"
+          objectFit="cover"
+        />
 
-          layout='fill'
-        /></Box>
-
-
-
-
-
+        <Box w="100%" h="40vh" display={{ base: "flex", lg: "none" }}>
+          <Image
+            objectFit="fill"
+            src={getUrlImage(article.hero_mobile.url)}
+            // maxHeight={"640px"}
+            //
+            w="100%"
+          />
+        </Box>
 
         <Box
           color={colors.primary}
