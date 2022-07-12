@@ -69,18 +69,13 @@ const PostCard = ({ idArticle, article }: Props) => {
           pl={{ base: "0px", lg: "80px" }}
           pr={{ base: "0px", lg: "80px" }}
         ></Box> */}
-        {
-          screenSize.width >= 750 ? <Box style={{ width: '100%', height: '660px', position: 'relative' }} display={{ base: "none", lg: "flex" }}>  <Image
-            src={getUrlImage(article.hero_desktop.url)}
 
-            layout='fill'
-          /></Box> : <Box style={{ width: '100%', height: '40vh', position: 'relative' }} display={{ base: "flex", lg: "none" }} position='relative'>
-            <Image
-              layout='fill'
-              src={getUrlImage(article.hero_mobile.url)}
-            />
-          </Box>
-        }
+        <Box style={{ width: '100%', height: screenSize.width >= 750 ? '660px' : '40vh', position: 'relative' }} display={{ base: "none", lg: "flex" }}>  <Image
+          src={getUrlImage(screenSize.width >= 750 ? article.hero_desktop.url : article.hero_mobile.url)}
+
+          layout='fill'
+        /></Box>
+
 
 
 
