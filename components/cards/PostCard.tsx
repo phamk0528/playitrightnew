@@ -9,12 +9,12 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-// import Image from "../Image";
+import Image from "../Image";
 import { useRouter } from "next/router";
 
 import { getUrlImage, formatDatePublic } from "../../helpers/commonFuction";
 import { colors } from "../../styles/theme";
-import Image from 'next/image'
+
 interface Props extends FlexProps {
   alt: string;
   idArticle: string;
@@ -67,8 +67,6 @@ const PostCard = ({ idArticle, article }: Props) => {
           pl={{ base: "0px", lg: "80px" }}
           pr={{ base: "0px", lg: "80px" }}
         ></Box>
-
-
 
         <Box w="100%" h="40vh" display={{ base: "flex", lg: "none" }}>
           <Image
