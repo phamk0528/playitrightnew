@@ -68,11 +68,7 @@ const PostCard = ({ idArticle, article }: Props) => {
           pr={{ base: "0px", lg: "80px" }}
         ></Box>
 
-        <Image
-          src={getUrlImage(article.hero_desktop.url)}
-          layout="fill"
-          objectFit="cover"
-        />
+
 
         <Box w="100%" h="40vh" display={{ base: "flex", lg: "none" }}>
           <Image
