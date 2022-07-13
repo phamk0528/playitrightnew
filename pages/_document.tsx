@@ -12,6 +12,7 @@ export default class Document extends NextDocument {
             <Html>
                 <Head>
                     <link rel="shortcut icon" href="/static/favicon.ico" />
+
                 </Head>
                 <body>
 
