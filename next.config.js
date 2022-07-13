@@ -48,6 +48,6 @@ module.exports = {
     },
     staticPageGenerationTimeout: 1000,
     images: {
-        domains: ['playitright.s3-ap-southeast-1.amazonaws.com'],
+        domains: ['playitright.s3-ap-southeast-1.amazonaws.com', 'quocbcx-1c878.kxcdn.com'],
     },
 };

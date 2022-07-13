@@ -9,7 +9,7 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-import Image from "../Image";
+import Image from 'next/image'
 import { useRouter } from "next/router";
 
 import { getUrlImage, formatDatePublic } from "../../helpers/commonFuction";
@@ -70,12 +70,16 @@ const PostCard = ({ idArticle, article }: Props) => {
 
         <Box w="100%" h="40vh" display={{ base: "flex", lg: "none" }}>
           <Image
-            objectFit="fill"
+            // objectFit="fill"
             src={getUrlImage(article.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=300&quality=70')}
             // maxHeight={"640px"}
             //
-
-            w="100%"
+            width="500px"
+            height={"40vh"}
+            objectFit='contain'
+            // layout='fill'
+            // w="100%"
+            priority={true}
           />
         </Box>
 
