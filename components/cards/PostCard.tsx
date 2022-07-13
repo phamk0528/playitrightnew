@@ -53,8 +53,8 @@ const PostCard = ({ idArticle, article }: Props) => {
           display={{ base: "none", lg: "flex" }}
           style={{
             backgroundImage: hover
-              ? `url("${getUrlImage(article.hero_desktop.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/'))}`
-              : `url("${getUrlImage(article.hero_desktop.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/'))}")`,
+              ? `url("${getUrlImage(article.hero_desktop.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/')) + '?width=800&quality=70'}`
+              : `url("${getUrlImage(article.hero_desktop.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/')) + '?width=800&quality=70'}")`,
             // backgroundImage:  `url("${getUrlImage(article.hero_desktop.url)}`,
             backgroundRepeat: "no-repeat",
 
