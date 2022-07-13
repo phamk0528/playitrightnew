@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { Box, Flex, Text, HStack, Spacer, Center, Heading, Icon } from '@chakra-ui/react';
 import PostCard from '../../cards/PostCard';
 import useColorTheme from '../../../hooks/useColorTheme';
-import ParkingCar from './ParkingCar';
+
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Slider from 'react-slick';
 import useWindowSize from '../../../hooks/useWindowSize';
-import Fade from 'react-reveal/Fade';
 
 type Props = {
   margin?: number;
@@ -122,32 +121,32 @@ const TrendingCard = ({ carousels, homepageContentData }: Props) => {
       </Box>
 
       {/* <Flex w="full" p={0} alignItems="center" justifyContent="center"> */}
-      <Fade bottom>
-        <Box w="full" pos="relative" overflow="hidden">
-          <Box w="full">
-            <Slider {...settings}>
-              {carousel?.map((slide: any) => (
-                <Box
-                  key={slide.id}
-                  h="55vh"
-                  w="full"
-                  cursor="pointer"
-                  boxSize="full"
-                  shadow="md"
-                  flex="none"
-                >
-                  <PostCard
-                    article={slide}
-                    idArticle={slide?.url}
-                    alt={`Picture of ${slide.id}`}
-                  />
-                </Box>
-              ))}
-            </Slider>
-            {/* <ParkingCar /> */}
-          </Box>
+
+      <Box w="full" pos="relative" overflow="hidden">
+        <Box w="full">
+          <Slider {...settings}>
+            {carousel?.map((slide: any) => (
+              <Box
+                key={slide.id}
+                h="55vh"
+                w="full"
+                cursor="pointer"
+                boxSize="full"
+                shadow="md"
+                flex="none"
+              >
+                <PostCard
+                  article={slide}
+                  idArticle={slide?.url}
+                  alt={`Picture of ${slide.id}`}
+                />
+              </Box>
+            ))}
+          </Slider>
+          {/* <ParkingCar /> */}
         </Box>
-      </Fade>
+      </Box>
+
       {/* <Flex w="full" pos="relative" overflow="hidden">
 
           <Flex w="full" {...carouselStyle}>
