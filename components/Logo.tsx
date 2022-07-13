@@ -7,7 +7,7 @@ const Logo = (props: any) => {
         src={props.src}
         objectFit="contain"
         maxWidth={{ base: "100%", lg: "unset" }}
-
+        height="100%"
       />
     </Box>
   );
