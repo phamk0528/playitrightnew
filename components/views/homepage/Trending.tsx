@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Box, Flex, Text, HStack, Spacer, Center, Heading, Icon } from '@chakra-ui/react';
-import PostCard from '../../cards/PostCard';
+// import PostCard from '../../cards/PostCard';
 import useColorTheme from '../../../hooks/useColorTheme';
 import ParkingCar from './ParkingCar';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Slider from 'react-slick';
 import useWindowSize from '../../../hooks/useWindowSize';
 import Fade from 'react-reveal/Fade';
-
+import dynamic from 'next/dynamic';
+const PostCard = dynamic(() => import("../../cards/PostCard"));
 type Props = {
   margin?: number;
   containerHeight?: number;
