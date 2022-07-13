@@ -74,6 +74,7 @@ const PostCard = ({ idArticle, article }: Props) => {
             src={getUrlImage(article.hero_mobile.url)}
             // maxHeight={"640px"}
             //
+
             w="100%"
           />
         </Box>
