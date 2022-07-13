@@ -71,7 +71,7 @@ const EventCard = ({
                         src={getUrlImage(event?.photos[0]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=300&quality=70' ?? '/placeholder.png')}
                         alt={'Photo of ' + event?.title}
                         objectFit="cover"
-                        priority={true}
+
                     />
                 </Box>
                 <Box display={{ base: 'flex', lg: 'none' }} >
