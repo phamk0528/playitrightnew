@@ -76,7 +76,7 @@ const PostCard = ({ idArticle, article }: Props) => {
             //
             width="500px"
             height={"40vh"}
-            objectFit='contain'
+            objectFit='cover'
             // layout='fill'
             // w="100%"
             priority={true}
