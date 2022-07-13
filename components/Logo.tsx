@@ -8,6 +8,7 @@ const Logo = (props: any) => {
         objectFit="contain"
         width={{ base: "100%", lg: "100%" }}
         height="100%"
+        alt='logo'
       />
     </Box>
   );

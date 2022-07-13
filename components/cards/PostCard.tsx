@@ -80,6 +80,7 @@ const PostCard = ({ idArticle, article }: Props) => {
             layout='fill'
             // w="100%"
             priority={true}
+            alt='banner'
           />
         </Box>
 

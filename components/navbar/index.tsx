@@ -106,7 +106,7 @@ export default function WithSubnavigation() {
                 </Flex>
                 <Flex flex={{ base: 2, md: 'auto' }} justify={{ base: 'center', md: 'center' }} alignItems='center'>
                     <Button variant="ghost">
-                        <Link href="/">
+                        <Link href="/" aria-label="homepage">
                             <Logo src="/logoPlayrightIT.png" />
                         </Link>
                     </Button>
