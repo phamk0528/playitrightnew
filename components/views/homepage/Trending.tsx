@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { Box, Flex, Text, HStack, Spacer, Center, Heading, Icon } from '@chakra-ui/react';
-// import PostCard from '../../cards/PostCard';
+import PostCard from '../../cards/PostCard';
 import useColorTheme from '../../../hooks/useColorTheme';
 import ParkingCar from './ParkingCar';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import Slider from 'react-slick';
 import useWindowSize from '../../../hooks/useWindowSize';
 import Fade from 'react-reveal/Fade';
-import dynamic from 'next/dynamic';
-const PostCard = dynamic(() => import("../../cards/PostCard"));
+
 type Props = {
   margin?: number;
   containerHeight?: number;
@@ -87,7 +86,7 @@ const TrendingCard = ({ carousels, homepageContentData }: Props) => {
         autoplay: true,
         arrows: true,
         speed: 500,
-        autoplaySpeed: 10000,
+        autoplaySpeed: 5000,
         cssEase: 'linear',
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
@@ -100,7 +99,7 @@ const TrendingCard = ({ carousels, homepageContentData }: Props) => {
         autoplay: false,
         speed: 500,
         arrows: true,
-        autoplaySpeed: 10000,
+        autoplaySpeed: 3000,
         cssEase: 'linear',
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />,
