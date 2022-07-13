@@ -9,7 +9,8 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
-import Image from 'next/image'
+import Image from '../Image';
+
 import { useRouter } from "next/router";
 
 import { getUrlImage, formatDatePublic } from "../../helpers/commonFuction";
@@ -77,9 +78,9 @@ const PostCard = ({ idArticle, article }: Props) => {
             width="500px"
             height={"40vh"}
             objectFit='cover'
-            // layout='fill'
-            // w="100%"
-            priority={true}
+          // layout='fill'
+          // w="100%"
+          // priority={true}
           />
         </Box>
 
