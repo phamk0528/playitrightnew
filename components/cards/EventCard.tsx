@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, BoxProps, Text, useBreakpointValue, Icon, Flex } from '@chakra-ui/react';
 import useColorTheme from '../../hooks/useColorTheme';
 import { useRouter } from 'next/router';
-import Image from '../Image';
+import Image from 'next/image'
 import Card from './Card';
 import _ from 'lodash';
 import moment from 'moment';
@@ -63,22 +63,25 @@ const EventCard = ({
                 flexDirection={'column'}
                 color={colors.primary}
             >
-                <Box display={{ base: 'none', lg: 'flex' }}>
+                <Box display={{ base: 'none', lg: 'flex' }} width="100%">
                     <Image
-                        width="100%"
-                        height={{ base: 40, md: 35, lg: 60 }}
+                        width="300px"
+                        height={"300px"}
+
                         src={getUrlImage(event?.photos[0]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=300&quality=70' ?? '/placeholder.png')}
                         alt={'Photo of ' + event?.title}
                         objectFit="cover"
+                        priority={true}
                     />
                 </Box>
-                <Box display={{ base: 'flex', lg: 'none' }}>
+                <Box display={{ base: 'flex', lg: 'none' }} >
                     <Image
-                        width="100%"
-                        height={{ base: 40, md: 35, lg: 60 }}
+                        width="180px"
+                        height={"170px"}
                         src={getUrlImage(event?.photos[1]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=180&quality=80' ?? '/placeholder.png')}
                         alt={'Photo of ' + event?.title}
                         objectFit="cover"
+                        priority={true}
                     />
                 </Box>
                 <Box color={"white"} bg={"red"} pt="2px" textAlign={'center'} pb="18px" fontSize={"14px"}>
