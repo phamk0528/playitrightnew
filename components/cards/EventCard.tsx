@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Box, BoxProps, Text, useBreakpointValue, Icon, Flex } from '@chakra-ui/react';
 import useColorTheme from '../../hooks/useColorTheme';
 import { useRouter } from 'next/router';
-// import Image from 'next/image'
+import Image from 'next/image'
 import Card from './Card';
 import _ from 'lodash';
 import moment from 'moment';
 import { getUrlImage } from '../../helpers/commonFuction';
 import { AiFillCalendar } from 'react-icons/ai';
-import Image from '../Image';
 import Fade from 'react-reveal/Fade';
 
 interface Props extends BoxProps {
@@ -64,7 +63,7 @@ const EventCard = ({
                 flexDirection={'column'}
                 color={colors.primary}
             >
-                {/* <Box display={{ base: 'none', lg: 'flex' }} width="100%">
+                <Box display={{ base: 'none', lg: 'flex' }} width="100%">
                     <Image
                         width="300px"
                         height={"300px"}
@@ -74,7 +73,7 @@ const EventCard = ({
                         objectFit="cover"
 
                     />
-                </Box> */}
+                </Box>
                 <Box display={{ base: 'flex', lg: 'none' }} position='relative'>
                     <Image
                         width="180px"
@@ -82,7 +81,7 @@ const EventCard = ({
                         src={getUrlImage(event?.photos[1]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=180&quality=80' ?? '/placeholder.png')}
                         alt={'Photo of ' + event?.title}
                         objectFit="cover"
-
+                        priority={true}
                     />
                 </Box>
                 <Box color={"white"} bg={"red"} pt="2px" textAlign={'center'} pb="18px" fontSize={"14px"}>
