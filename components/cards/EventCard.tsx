@@ -67,7 +67,7 @@ const EventCard = ({
                     <Image
                         width="100%"
                         height={{ base: 40, md: 35, lg: 60 }}
-                        src={getUrlImage(event?.photos[0]?.url ?? '/placeholder.png')}
+                        src={getUrlImage(event?.photos[0]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=70' ?? '/placeholder.png')}
                         alt={'Photo of ' + event?.title}
                         objectFit="cover"
                     />
@@ -76,7 +76,7 @@ const EventCard = ({
                     <Image
                         width="100%"
                         height="22vh"
-                        src={getUrlImage(event?.photos[1]?.url ?? '/placeholder.png')}
+                        src={getUrlImage(event?.photos[1]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=100&quality=70' ?? '/placeholder.png')}
                         alt={'Photo of ' + event?.title}
                         objectFit="cover"
                     />
