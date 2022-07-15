@@ -114,14 +114,17 @@ const ProductCard = ({ product, heightTitle }: Props) => {
 
                     <ColorCard colors={colors} />
                     <Box px={1} py={2}>
-                        <chakra.h4
+
+                        <Text
                             color={useColorModeValue('black', 'white')}
-                            fontWeight="bold"
+
                             fontSize="12px"
+                            fontWeight="bold"
                             textTransform="uppercase"
+                            pt={1}
                         >
                             {`₱ ${product.price}`}
-                        </chakra.h4>
+                        </Text>
                     </Box>
 
 
