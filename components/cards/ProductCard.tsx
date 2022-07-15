@@ -35,12 +35,12 @@ const ColorCard = ({ colors }: ColorProps) => {
 
 const ProductCard = ({ product, heightTitle }: Props) => {
     const [hover, setHover] = useState(false);
-    const urlImage: any = Object.values(product.photos.photo_set) || null
+    const urlImage: any = product?.photos?.photo_set ? Object?.values(product?.photos?.photo_set) : Object?.values(product?.photos)
     const onClick = () => {
-        window.open(process.env.NEXT_PUBLIC_BASE_URL_SALES_PRODUCT + `/products/${product.id}`, '_blank');
+        window.open(process.env.NEXT_PUBLIC_BASE_URL_SALES_PRODUCT + `/products/${product?.id}`, '_blank');
     };
 
-    const colorsArray = _.values(product.photos.photo_set)?.map(x => x?.code)
+    const colorsArray = _.values(product?.photos?.photo_set)?.map(x => x?.code)
     const colors = [...new Set(colorsArray)];
 
 
@@ -91,7 +91,7 @@ const ProductCard = ({ product, heightTitle }: Props) => {
 
                         alt={'Photo of '}
                         objectFit="contain"
-                        layout='fill'
+
                         priority={true}
                     />
                 </Box>

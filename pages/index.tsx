@@ -14,6 +14,7 @@ import dynamic from 'next/dynamic';
 import ComingSoon from '../components/views/comingSoon';
 import _ from 'lodash';
 import ListProducts from '../components/views/homepage/ListProductCard';
+import HightLight from '../components/views/homepage/HighLight';
 const MyDynamicComponent = dynamic(() => import('../components/views/homepage/Instagrams'), { ssr: false });
 type Props = {
     featured?: any;
@@ -39,6 +40,12 @@ const IndexPage = ({ carousels, events, deals, banners, homepageContent, recomme
 
     const listBanner = homepageContentData?.filter((x: any) => {
         return x?.id === "4g+Chi4C"
+    })
+    const bannerHighlight = homepageContentData?.filter((x: any) => {
+        return x?.id === "81QE/qtW"
+    })
+    const flashSaleHighlight = homepageContentData?.filter((x: any) => {
+        return x?.id === "KpVRNCGX"
     })
 
     console.log("listBanner", homepageContent)
@@ -99,9 +106,11 @@ const IndexPage = ({ carousels, events, deals, banners, homepageContent, recomme
                     />
                 </Box>
             </>
-            {bestSeller?.length > 0 ? <ListProducts products={bestSeller} /> : null}
+            {bestSeller?.length > 0 ? <ListProducts products={bestSeller} title={'Best Seller'} /> : null}
+            <HightLight carousels={carousels} homepageContentData={homepageContentData} banner={bannerHighlight[0]?.props?.values?.imageUrl?.urlMobile}
+                flashSaleHighlight={flashSaleHighlight[0]?.props?.values?.imageUrl?.urlMobile} />
 
-
+            {recommend?.length > 0 ? <ListProducts products={recommend} title='Recommended Products' /> : null}
 
             {/* <ComingSoon /> */}
         </>

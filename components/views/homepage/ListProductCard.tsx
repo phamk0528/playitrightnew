@@ -12,9 +12,10 @@ type Props = {
     products: any;
     margin?: number;
     containerHeight?: number;
+    title: string
 };
 
-const ListProducts = ({ products }: Props) => {
+const ListProducts = ({ products, title }: Props) => {
     const colors = useColorTheme();
     const screenSize = useWindowSize();
     const { hoverProps, isHovered } = useHover({});
@@ -128,7 +129,7 @@ const ListProducts = ({ products }: Props) => {
                     fontFamily="Arial"
                     fontWeight={700}
                 >
-                    Best Seller
+                    {title}
                 </Heading>
 
                 {products?.length < 4 ? (

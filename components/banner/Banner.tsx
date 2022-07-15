@@ -54,7 +54,7 @@ const Banner = ({
       <Box>
         <Image
           width="100vw"
-          height="auto"
+          height="100%"
           src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100')}
 
         // objectFit="cover"
