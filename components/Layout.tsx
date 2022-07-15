@@ -56,7 +56,7 @@ const Layout: React.FC<Props> = ({ children, title = 'Modern News', ...props }) 
                     <ToastContainer autoClose={2000} />
                     {children}
                 </Box>
-                <Footer />
+                {/* <Footer /> */}
             </Box>
         </Box>
     );

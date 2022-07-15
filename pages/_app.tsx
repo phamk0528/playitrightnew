@@ -43,7 +43,7 @@ function Application({ Component, pageProps }: AppProps) {
         <RecoilRoot>
             <DefaultSeo {...SEO} />
             <Chakra cookies={pageProps.cookies}>
-                <Layout title="Home | Modern News" px={{ base: '.6em', md: '1.2em' }} py="1.4em">
+                <Layout title="Home | Modern News" px={{ base: '0px', md: '1.2em' }} >
                     <Modal isOpen={loading}>
                         <ModalOverlay textAlign="center">
                             <BounceLoader css={override} size={70} color='#A8A248' loading />

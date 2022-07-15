@@ -68,23 +68,16 @@ const FeaturedBranch = ({ homeContent }: Props) => {
                         <Box width="100%" alignSelf={'center'} mt='15px' alignItems={'center'} display='flex' justifyContent={'center'} flexDirection='column'>
                             <Image
                                 marginTop="5px"
-                                width="100px"
-                                height={"100px"}
+                                width="75px"
+                                height={"75px"}
                                 src={x?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
                                 alt={'Photo of ' + x?.props?.values?.imageUrl?.urlMobile}
                                 objectFit="contain"
                             />
-                            <Text align={'center'} fontSize="12px"
-                                fontWeight="bold"
-                                textTransform="uppercase"
-                                pt={1}>
-                                <div className="product-des" dangerouslySetInnerHTML={{ __html: textSumary[index]?.props?.values?.text }}></div></Text>
 
-                            <Text align={'center'} fontSize="12px"
+                            <div className="product-des" style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', textAlign: 'center', paddingTop: "1px" }} dangerouslySetInnerHTML={{ __html: textSumary[index]?.props?.values?.text }} />
+                            <div className="product-des" style={{ fontSize: '12px', textAlign: 'center', paddingTop: "1px" }} dangerouslySetInnerHTML={{ __html: textDescription[index]?.props?.values?.text }} />
 
-
-                                pt={1}>
-                                <div className="product-des" dangerouslySetInnerHTML={{ __html: textDescription[index]?.props?.values?.text }}></div></Text>
                         </Box>
                     ))
                     }
