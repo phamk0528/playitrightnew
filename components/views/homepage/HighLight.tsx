@@ -170,7 +170,7 @@ const HightLight = ({ homepageContentData, banner, flashSaleHighlight }: Props) 
 
                             width="100%"
                             height="25vh"
-                            src={banner.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
+                            src={banner.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=90'}
                             alt={'Photo of ' + banner}
                             objectFit='cover'
                             layout='fill'

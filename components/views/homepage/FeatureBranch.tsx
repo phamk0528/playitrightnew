@@ -44,7 +44,7 @@ const FeaturedBranch = ({ homeContent }: Props) => {
 
                                 width="100%"
 
-                                src={x?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
+                                src={x?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=80'}
                                 alt={'Photo of ' + x?.props?.values?.imageUrl?.urlMobile}
 
                                 height={"100px"}

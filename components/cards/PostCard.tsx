@@ -67,7 +67,7 @@ const PostCard = ({ idArticle, article }: Props) => {
         <Box w="100%" h="45vh" display={{ base: "flex", lg: "none" }} position='relative'>
           <Image
             // objectFit="fill"
-            src={getUrlImage(article.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=400&quality=100')}
+            src={getUrlImage(article.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=95')}
             // maxHeight={"640px"}
             //
             width="380px"

@@ -61,7 +61,7 @@ const Banner = ({
           // w="100%"
 
           alt='banner'
-          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=400&quality=100')}
+          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=400&quality=90')}
 
         // objectFit="cover"
         />
