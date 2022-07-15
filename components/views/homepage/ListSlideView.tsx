@@ -19,13 +19,12 @@ type Props = {
     homepageContentData?: any
 
 };
-const ListSlideView = ({ carousels, homepageContentData, banner, flashSaleHighlight }: Props) => {
+const ListSlideView = ({ carousels, homepageContentData, }: Props) => {
 
-    const slides = carousels;
+
 
     const screenSize = useWindowSize();
 
-    const announ = homepageContentData?.find((x: any) => x?.type === "TextGroupView")
     const carousel = homepageContentData?.find((x: any) => x?.id === "thwRCz3N")?.props?.values?.valueText?.map((x: any) => {
         return {
 

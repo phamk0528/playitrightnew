@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { chakra, Box, Image, Flex, useColorModeValue, HStack, Text } from '@chakra-ui/react';
+import { chakra, Box, Flex, useColorModeValue, HStack, Text } from '@chakra-ui/react';
 import _ from 'lodash';
 import Card from './Card';
+import Image from 'next/image'
+
+
 type Props = {
     product: any;
     heightTitle: string;
@@ -88,7 +91,7 @@ const ProductCard = ({ product, heightTitle }: Props) => {
                         width="100%"
                         height={"100px"}
                         src={urlImage[0].photos[0].replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=300&quality=80' ?? '/placeholder.png'}
-
+                        layout='fill'
                         alt={'Photo of '}
                         objectFit="contain"
 

@@ -68,20 +68,23 @@ const FeaturedBranch = ({ homeContent }: Props) => {
                     justifyContent="center"
                 >
                     {banner?.map((x: any, index: number) => (
-                        <Box width="100%" alignSelf={'center'} mt='15px' alignItems={'center'} display='flex' justifyContent={'center'} flexDirection='column'>
-                            <Image
-                                marginTop="5px"
-                                width="75px"
-                                height={"75px"}
-                                src={x?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
-                                alt={'Photo of ' + x?.props?.values?.imageUrl?.urlMobile}
-                                objectFit="contain"
-                            />
+                        <>
+                            <Box width="100%" height={"75px"} alignSelf={'center'} mt='15px' alignItems={'center'} display='flex' justifyContent={'center'} flexDirection='column' position='relative'>
+                                <Image
+                                    layout='fill'
+                                    width="75px"
+                                    height={"75px"}
+                                    src={x?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
+                                    alt={'Photo of ' + x?.props?.values?.imageUrl?.urlMobile}
+                                    objectFit="contain"
+                                />
 
+
+
+                            </Box>
                             <div className="product-des" style={{ fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', textAlign: 'center', paddingTop: "1px" }} dangerouslySetInnerHTML={{ __html: textSumary[index]?.props?.values?.text }} />
                             <div className="product-des" style={{ fontSize: '12px', textAlign: 'center', paddingTop: "1px" }} dangerouslySetInnerHTML={{ __html: textDescription[index]?.props?.values?.text }} />
-
-                        </Box>
+                        </>
                     ))
                     }
                 </Box>
