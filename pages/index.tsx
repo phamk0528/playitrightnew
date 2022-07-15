@@ -5,7 +5,7 @@ import ListDeals from '../components/views/homepage/ListDeals';
 import { Box } from '@chakra-ui/react';
 import Banner from '../components/banner/Banner';
 import { GetStaticProps } from 'next';
-import { useGetAllCarousels, useGetHomePage } from '../helpers/carousels';
+import { useGetAllCarousels, useGetHomePage, useGetProductByCollection } from '../helpers/carousels';
 import { useGetEventsByParams } from '../helpers/events';
 import { useGetDealsByParams } from '../helpers/deals';
 import { useGetContentHomePage } from '../helpers/homepage';
@@ -13,6 +13,7 @@ import { NextSeo } from 'next-seo';
 import dynamic from 'next/dynamic';
 import ComingSoon from '../components/views/comingSoon';
 import _ from 'lodash';
+import ListProducts from '../components/views/homepage/ListProductCard';
 const MyDynamicComponent = dynamic(() => import('../components/views/homepage/Instagrams'), { ssr: false });
 type Props = {
     featured?: any;
@@ -23,9 +24,11 @@ type Props = {
     deals?: any;
     errors?: string;
     homepageContent?: any
+    bestSeller?: any
+    recommend?: any
 };
 
-const IndexPage = ({ carousels, events, deals, banners, homepageContent }: Props) => {
+const IndexPage = ({ carousels, events, deals, banners, homepageContent, recommend, bestSeller }: Props) => {
     const homepageContentData = _.values(homepageContent?.homepage_content)
     const listContent = homepageContentData?.filter((x: any) => {
         return x?.id === "Y12VF8Q9" || x?.id === "qq1ON/UD"
@@ -34,7 +37,13 @@ const IndexPage = ({ carousels, events, deals, banners, homepageContent }: Props
         return x?.id === "YferTLSC" || x?.id === "jGekaT+o"
     })?.map((x: any, i: any) => { return { ...x, textContent: listContent[+i]?.props?.values?.text } })
 
-    console.log("homepageContentData", homepageContent)
+    const listBanner = homepageContentData?.filter((x: any) => {
+        return x?.id === "4g+Chi4C"
+    })
+
+    console.log("listBanner", homepageContent)
+    console.log("recommend", recommend)
+    console.log("bestSeller", bestSeller)
 
     return (
         <>
@@ -69,6 +78,29 @@ const IndexPage = ({ carousels, events, deals, banners, homepageContent }: Props
             {listArraivel?.length > 0 ? <ListEvents events={listArraivel} /> : null}
 
 
+            <>
+
+                <Box display={{ base: 'none', lg: 'flex' }}>
+                    <Banner
+                        mt={{ base: '20px', lg: '50px' }}
+                        pl={{ base: '0px', lg: '60px' }}
+                        pr={{ base: '0px', lg: '60px' }}
+                        banner={{ url: listBanner[0]?.props?.values?.imageUrl?.url }}
+
+                    />
+                </Box>
+                <Box display={{ base: 'flex', lg: 'none' }}>
+                    <Banner
+                        mt={{ base: '20px', lg: '50px' }}
+                        pl={{ base: '0px', lg: '60px' }}
+                        pr={{ base: '0px', lg: '60px' }}
+                        banner={{ url: listBanner[0]?.props?.values?.imageUrl?.urlMobile }}
+
+                    />
+                </Box>
+            </>
+            {bestSeller?.length > 0 ? <ListProducts products={bestSeller} /> : null}
+
 
 
             {/* <ComingSoon /> */}
@@ -80,11 +112,16 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
     try {
 
         let homepageContent = await useGetHomePage()
+        let bestSeller = await useGetProductByCollection(10)
+        let recommend = await useGetProductByCollection(13)
+
 
         return {
             props: {
 
-                homepageContent: homepageContent
+                homepageContent: homepageContent,
+                bestSeller: bestSeller,
+                recommend: recommend
             },
             revalidate: 60,
         };

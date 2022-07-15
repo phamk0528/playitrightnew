@@ -37,6 +37,7 @@ const Banner = ({
     window.open(url, "_blank");
   };
 
+
   return (
     <Card
       onClick={() => url ? onClickEvent() : console.log('No URL')}
@@ -54,7 +55,7 @@ const Banner = ({
         <Image
           width="100vw"
           height="auto"
-          src={getUrlImage(banner?.url)}
+          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100')}
 
         // objectFit="cover"
         />

@@ -41,7 +41,7 @@ const TrendingCard = ({ carousels, homepageContentData }: Props) => {
           opacity: 0.8,
           color: colors.primary,
         }}
-        top={'50%'}
+        top={'45%'}
         right={-15}
         color="white"
         zIndex={99}
@@ -63,7 +63,7 @@ const TrendingCard = ({ carousels, homepageContentData }: Props) => {
           opacity: 0.8,
           color: colors.primary,
         }}
-        top={'50%'}
+        top={'45%'}
         left={-15}
         color="white"
         zIndex={99}
@@ -108,12 +108,13 @@ const TrendingCard = ({ carousels, homepageContentData }: Props) => {
       <Box bg='red.500' alignItems={'center'} display='flex' py="7px" mb="20px" >
         <Heading
           transition="ease-in 0.15s"
-          fontSize="15px"
+          fontSize="12px"
           width="100%"
           textAlign="center"
           color='white'
           fontFamily="Arial"
-
+          fontWeight={'normal'}
+          lineHeight='20px'
 
         >
           {announ?.props?.values?.valueText[0]?.title}

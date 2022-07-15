@@ -48,54 +48,54 @@ const EventCard = ({
     };
 
     return (
-        <Fade bottom>
-            <Card
-                onClick={() => onClickEvent()}
-                justifyContent="flex-start"
-                cursor="pointer"
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-                style={{ transform: `scale(${hover ? 1.1 : 1})` }}
-                transition="ease-in 0.2s"
-                overflow="hidden"
-                display="flex"
-                {...props}
-                flexDirection={'column'}
-                color={colors.primary}
-            >
-                <Box display={{ base: 'none', lg: 'flex' }} width="100%">
-                    <Image
-                        width="300px"
-                        height={"300px"}
 
-                        src={getUrlImage(event?.photos[0]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=80' ?? '/placeholder.png')}
-                        alt={'Photo of ' + event?.title}
-                        objectFit="cover"
+        <Card
+            onClick={() => onClickEvent()}
+            justifyContent="flex-start"
+            cursor="pointer"
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            style={{ transform: `scale(${hover ? 1.1 : 1})` }}
+            transition="ease-in 0.2s"
+            overflow="hidden"
+            display="flex"
+            {...props}
+            flexDirection={'column'}
+            color={colors.primary}
+        >
+            <Box display={{ base: 'none', lg: 'flex' }} width="100%">
+                <Image
+                    width="300px"
+                    height={"300px"}
 
-                    />
+                    src={getUrlImage(event?.photos[0]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=80' ?? '/placeholder.png')}
+                    alt={'Photo of ' + event?.title}
+                    objectFit="cover"
+
+                />
+            </Box>
+            <Box display={{ base: 'flex', lg: 'none' }} width="100%"
+                height={"170px"} position='relative'>
+                <Image
+                    width="180px"
+                    height={"170px"}
+                    src={getUrlImage(event?.photos[1]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=80' ?? '/placeholder.png')}
+                    alt={'Photo of ' + event?.title}
+                    // objectFit="cover"
+                    layout='fill'
+                    priority={true}
+                />
+            </Box>
+            <Box color={"white"} bg={"red"} pt="2px" textAlign={'center'} pb="18px" fontSize={"14px"}>
+                <Box h={heightTitle}>
+
+                    <div className="product-des" dangerouslySetInnerHTML={{ __html: event?.textContent }}></div>
                 </Box>
-                <Box display={{ base: 'flex', lg: 'none' }} width="100%"
-                    height={"170px"} position='relative'>
-                    <Image
-                        width="180px"
-                        height={"170px"}
-                        src={getUrlImage(event?.photos[1]?.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=80' ?? '/placeholder.png')}
-                        alt={'Photo of ' + event?.title}
-                        // objectFit="cover"
-                        layout='fill'
-                        priority={true}
-                    />
-                </Box>
-                <Box color={"white"} bg={"red"} pt="2px" textAlign={'center'} pb="18px" fontSize={"14px"}>
-                    <Box h={heightTitle}>
-
-                        <div className="product-des" dangerouslySetInnerHTML={{ __html: event?.textContent }}></div>
-                    </Box>
 
 
-                </Box>
-            </Card>
-        </Fade>
+            </Box>
+        </Card>
+
     );
 };
 

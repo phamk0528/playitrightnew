@@ -8,8 +8,8 @@ const Card = ({ children, ...props }: Props) => {
   const colors = useColorTheme();
   return (
     <Box
-      paddingX="0.5rem"
-      paddingY=".5rem"
+      // paddingX="0.5rem"
+      // paddingY=".5rem"
       boxShadow="sm"
       {...props}
       backgroundColor={colors.background}

@@ -29,3 +29,18 @@ export const useGetHomePage = async () => {
         console.log('error', error);
     }
 };
+
+export const useGetProductByCollection = async (id: number) => {
+    try {
+        const data = await fetch(`https://api.playitright.com/products?collection=${id}`, {
+            headers: {
+                Accept: 'application/json, text/plain, */*',
+                Referer: 'https://playitright.com/',
+            },
+        });
+        console.log('statusCode-Carousel:', data);
+        return await data.json();
+    } catch (error) {
+        console.log('error', error);
+    }
+};
