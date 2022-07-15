@@ -20,13 +20,13 @@ type Props = {
     banner?: any
     flashSaleHighlight?: any
 };
-const HightLight = ({ carousels, homepageContentData, banner, flashSaleHighlight }: Props) => {
+const HightLight = ({ homepageContentData, banner, flashSaleHighlight }: Props) => {
 
-    const slides = carousels;
+
 
     const screenSize = useWindowSize();
 
-    const announ = homepageContentData?.find((x: any) => x?.type === "TextGroupView")
+
     const carousel = homepageContentData?.find((x: any) => x?.id === "Jb5xc3vR")?.props?.values?.valueText?.map((x: any) => {
         return {
 

@@ -1,5 +1,5 @@
-import { Avatar, Box, Heading, Icon, Text } from '@chakra-ui/react';
-import React, { useEffect } from 'react';
+import { Box, Icon, Text } from '@chakra-ui/react';
+import React,   from 'react';
 import Slider from 'react-slick';
 import useColorTheme from '../../../hooks/useColorTheme';
 
@@ -10,7 +10,7 @@ import Image from 'next/image'
 
 
 import useWindowSize from '../../../hooks/useWindowSize';
-import PostCard from '../../cards/PostCard';
+
 
 type Props = {
     margin?: number;
@@ -19,7 +19,7 @@ type Props = {
     homepageContentData?: any
 
 };
-const ListSlideView = ({ carousels, homepageContentData, }: Props) => {
+const ListSlideView = ({ homepageContentData, }: Props) => {
 
 
 

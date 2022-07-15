@@ -16,14 +16,11 @@ type Props = {
 };
 
 const ListProducts = ({ products, title }: Props) => {
-    const colors = useColorTheme();
+
     const screenSize = useWindowSize();
     const { hoverProps, isHovered } = useHover({});
-    const router = useRouter();
-    const getAllDeals = () => {
-        router.push(`/whatsOn`);
-        window.scrollTo(0, 0);
-    };
+
+
     function SampleNextArrow(props: any) {
         const { onClick } = props;
         return (
