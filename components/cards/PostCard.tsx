@@ -68,14 +68,14 @@ const PostCard = ({ idArticle, article }: Props) => {
           pr={{ base: "0px", lg: "80px" }}
         ></Box>
 
-        <Box w="100%" h="40vh" display={{ base: "flex", lg: "none" }} position='relative'>
+        <Box w="100%" h="45vh" display={{ base: "flex", lg: "none" }} position='relative'>
           <Image
             // objectFit="fill"
-            src={getUrlImage(article.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=90')}
+            src={getUrlImage(article.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=450&quality=100')}
             // maxHeight={"640px"}
             //
             width="380px"
-            height={"40vh"}
+            height={"45vh"}
             objectFit='cover'
             layout='fill'
             // w="100%"
