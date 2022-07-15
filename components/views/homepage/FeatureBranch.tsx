@@ -1,6 +1,6 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
-import Image from '../../Image';
+import Image from 'next/image'
 
 type Props = {
     homeContent?: any;
@@ -39,14 +39,17 @@ const FeaturedBranch = ({ homeContent }: Props) => {
                 >
 
                     {carousel?.map((x: any) => (
-                        <Box width="70%" alignSelf={'center'} mt='15px'>
+                        <Box width="70%" height={"250px"} alignSelf={'center'} mt='15px' marginTop="5px" position='relative'>
                             <Image
-                                marginTop="5px"
+
                                 width="100%"
 
                                 src={x?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
                                 alt={'Photo of ' + x?.props?.values?.imageUrl?.urlMobile}
-                                objectFit="cover"
+
+                                height={"100px"}
+                                objectFit='contain'
+                                layout='fill'
                             />
                         </Box>
                     ))

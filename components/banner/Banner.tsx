@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Box, BoxProps, useBreakpointValue } from "@chakra-ui/react";
 import useColorTheme from "../../hooks/useColorTheme";
 import { useRouter } from "next/router";
-import Image from "../Image";
+// import Image from "../Image";
 import Card from "../cards/Card";
 import _ from "lodash";
 import { getUrlImage } from "../../helpers/commonFuction";
+import Image from 'next/image'
 
 interface Props extends BoxProps {
   banner: any;
@@ -51,11 +52,16 @@ const Banner = ({
       color={colors.primary}
       w="100%"
     >
-      <Box>
+      <Box w="100%" h="30vh" position='relative'>
         <Image
-          width="100vw"
-          height="100%"
-          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100')}
+          width="100%"
+          height={"30vh"}
+          objectFit='contain'
+          layout='fill'
+          // w="100%"
+
+          alt='banner'
+          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=400&quality=100')}
 
         // objectFit="cover"
         />
