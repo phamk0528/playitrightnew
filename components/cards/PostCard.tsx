@@ -10,9 +10,9 @@ import {
   Center,
 } from "@chakra-ui/react";
 import Image from 'next/image'
-import { useRouter } from "next/router";
 
-import { getUrlImage, formatDatePublic } from "../../helpers/commonFuction";
+
+import { getUrlImage } from "../../helpers/commonFuction";
 import { colors } from "../../styles/theme";
 
 interface Props extends FlexProps {
@@ -23,11 +23,7 @@ interface Props extends FlexProps {
 
 const PostCard = ({ idArticle, article }: Props) => {
   const [hover, setHover] = useState(false);
-  const router = useRouter();
-  const onClick = () => {
-    window.open(idArticle, "_blank");
 
-  };
 
   return (
     <Flex

@@ -11,7 +11,7 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 // import Image  from '../../Image';
 
 import useWindowSize from '../../../hooks/useWindowSize';
-import PostCard from '../../cards/PostCard';
+
 type Props = {
     margin?: number;
     containerHeight?: number;
@@ -38,7 +38,7 @@ const HightLight = ({ homepageContentData, banner, flashSaleHighlight }: Props) 
     })
 
 
-    console.log("homepageContentData", carousel)
+
     function SampleNextArrow(props: any) {
         const { onClick } = props;
         return (
