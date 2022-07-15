@@ -93,7 +93,7 @@ const ProductCard = ({ product, heightTitle }: Props) => {
                         alt={'Photo of '}
                         objectFit="contain"
 
-                        priority={true}
+
                     />
                 </Box>
                 <Box py={2} h={heightTitle}>
