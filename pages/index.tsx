@@ -16,6 +16,7 @@ import _ from 'lodash';
 import ListProducts from '../components/views/homepage/ListProductCard';
 import HightLight from '../components/views/homepage/HighLight';
 import ListSlideView from '../components/views/homepage/ListSlideView';
+import FeaturedBranch from '../components/views/homepage/FeatureBranch';
 const MyDynamicComponent = dynamic(() => import('../components/views/homepage/Instagrams'), { ssr: false });
 type Props = {
     featured?: any;
@@ -113,6 +114,7 @@ const IndexPage = ({ carousels, events, deals, banners, homepageContent, recomme
                 flashSaleHighlight={flashSaleHighlight[0]?.props?.values?.imageUrl?.urlMobile} />
             <ListSlideView carousels={carousels} homepageContentData={homepageContentData} />
             {recommend?.length > 0 ? <ListProducts products={recommend} title='Recommended Products' /> : null}
+            <FeaturedBranch homeContent={homepageContentData} />
 
             {/* <ComingSoon /> */}
         </>
