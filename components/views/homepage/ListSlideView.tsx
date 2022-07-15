@@ -6,7 +6,8 @@ import useColorTheme from '../../../hooks/useColorTheme';
 
 
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import Image from '../../Image';
+import Image from 'next/image'
+
 
 import useWindowSize from '../../../hooks/useWindowSize';
 import PostCard from '../../cards/PostCard';
@@ -118,14 +119,18 @@ const ListSlideView = ({ carousels, homepageContentData, banner, flashSaleHighli
                 <Slider {...settings}>
                     {carousel?.map((slide: any) => (
                         <Box pt={{ base: '10%', lg: '10%' }} px="3px" key={'listEvent' + slide.hero_mobile.url}>
-                            <Avatar
-                                // width="100%"
-                                // height="20vh"
-                                src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
-                                alt={'Photo of ' + slide.hero_mobile.url}
-                                objectFit="contain"
-                                size='1xl'
-                            />
+                            <Box width="100px" height={"100px"} alignSelf={'center'} mt='15px' marginTop="5px" position='relative'>
+                                <Image
+                                    // width="100%"
+                                    // height="20vh"
+                                    src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
+                                    alt={'Photo of ' + slide.hero_mobile.url}
+                                    objectFit="cover"
+
+                                    layout='fill'
+
+                                />
+                            </Box>
                             <Text align={'center'} fontSize="12px" mt="5px"
                                 fontWeight="bold"
                                 textTransform="uppercase"

@@ -1,7 +1,8 @@
 import { Box, Heading, SimpleGrid, Text, Icon } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
-import Image from '../../Image';
+// import Image from '../../Image';
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import Image from 'next/image'
 
 type Props = {
     homeContent?: any;
@@ -35,14 +36,18 @@ const FooterHomePage = ({ homeContent }: Props) => {
 
 
                     <Box width="100%" alignSelf={'center'} mt='15px' bgColor="rgb(236, 236, 236);">
-                        <Image
-                            marginTop="5px"
-                            width="100%"
+                        <Box width="100%" height={"30vh"} alignSelf={'center'} mt='15px' marginTop="5px" position='relative'>
+                            <Image
 
-                            src={banner?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=400&quality=100'}
-                            alt={'Photo of ' + banner?.props?.values?.imageUrl?.urlMobile}
-                            objectFit="contain"
-                        />
+                                width="100%"
+                                height={"25vh"}
+                                src={banner?.props?.values?.imageUrl?.urlMobile?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=500&quality=100'}
+                                alt={'Photo of ' + banner?.props?.values?.imageUrl?.urlMobile}
+                                objectFit="contain"
+
+                                layout='fill'
+                            />
+                        </Box>
                         {
                             contentFooter?.map(item => <>
                                 <Box pt="20px" px="10px">

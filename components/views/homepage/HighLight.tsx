@@ -2,11 +2,13 @@ import { Box, Heading, Icon, SimpleGrid } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import Slider from 'react-slick';
 import useColorTheme from '../../../hooks/useColorTheme';
+import Image from 'next/image'
+
 
 
 
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
-import Image from '../../Image';
+// import Image  from '../../Image';
 
 import useWindowSize from '../../../hooks/useWindowSize';
 import PostCard from '../../cards/PostCard';
@@ -134,39 +136,46 @@ const HightLight = ({ carousels, homepageContentData, banner, flashSaleHighlight
                     </Heading>
 
                     <SimpleGrid columns={2} spacing={'10px'} width="100%">
-                        <Box bg='tomato' width="100%" maxH={"20vh"}>
+                        <Box width="100%" h={"20vh"} >
                             <Slider {...settings}>
                                 {carousel?.map((slide: any) => (
-                                    <Image
-                                        width="100%"
-                                        height="20vh"
-                                        src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
-                                        alt={'Photo of ' + slide.hero_mobile.url}
-                                        objectFit="cover"
-                                    />
+                                    <Box width="100%" h={"20vh"} position='relative'>
+                                        <Image
+                                            width="100%"
+                                            height="20vh"
+                                            src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
+                                            alt={'Photo of ' + slide.hero_mobile.url}
+
+                                            objectFit='cover'
+                                            layout='fill'
+                                        />
+                                    </Box>
                                 ))}
                             </Slider>
                         </Box>
-                        <Box bg='tomato' width="100%" maxH={"20vh"}>
+                        <Box width="100%" h={"20vh"} position='relative'>
                             <Image
                                 width="100%"
                                 height="20vh"
                                 src={flashSaleHighlight.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
                                 alt={'Photo of ' + flashSaleHighlight}
-                                objectFit="cover"
+
+                                objectFit='cover'
+                                layout='fill'
                             />
                         </Box>
                     </SimpleGrid>
+                    <Box width="100%" h={"25vh"} position='relative'>
+                        <Image
 
-                    <Image
-                        marginTop="5px"
-                        width="100%"
-                        height="25vh"
-                        src={banner.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
-                        alt={'Photo of ' + banner}
-                        objectFit="cover"
-                    />
-
+                            width="100%"
+                            height="25vh"
+                            src={banner.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=100'}
+                            alt={'Photo of ' + banner}
+                            objectFit='cover'
+                            layout='fill'
+                        />
+                    </Box>
                 </Box>
             </Box>
         </>
