@@ -4,11 +4,11 @@ import useColorTheme from '../../hooks/useColorTheme';
 import { useRouter } from 'next/router';
 import Image from '../Image';
 import Card from './Card';
-import _ from 'lodash';
+
 import { getUrlImage } from '../../helpers/commonFuction';
-import { FaStar, FaGlobe, FaMoneyBill, FaMoneyCheckAlt } from 'react-icons/fa';
+import { FaStar, FaMoneyCheckAlt } from 'react-icons/fa';
 import { MdShoppingCart } from 'react-icons/md';
-import Fade from 'react-reveal/Fade';
+
 interface Props extends BoxProps {
     store: any;
     column?: boolean;
@@ -36,10 +36,7 @@ const StoreCard = ({
 }: Props) => {
     const [hover, setHover] = useState(false);
     const colors = useColorTheme();
-    const flexDirection: FlexDirection = useBreakpointValue({
-        base: 'column',
-        md: column ? 'column' : 'row',
-    });
+
     const router = useRouter();
     const onClickEvent = () => {
         router.push(`/stores/${idStore}`);

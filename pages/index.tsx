@@ -1,24 +1,29 @@
 import React from 'react';
-import TrendingCard from '../components/views/homepage/Trending';
+
 import ListEvents from '../components/views/homepage/ListEvents';
-import ListDeals from '../components/views/homepage/ListDeals';
+
 import { Box } from '@chakra-ui/react';
 import Banner from '../components/banner/Banner';
 import { GetStaticProps } from 'next';
-import { useGetAllCarousels, useGetHomePage, useGetProductByCollection } from '../helpers/carousels';
-import { useGetEventsByParams } from '../helpers/events';
-import { useGetDealsByParams } from '../helpers/deals';
-import { useGetContentHomePage } from '../helpers/homepage';
-import { NextSeo } from 'next-seo';
-import dynamic from 'next/dynamic';
-import ComingSoon from '../components/views/comingSoon';
-import _ from 'lodash';
+import { useGetHomePage, useGetProductByCollection } from '../helpers/carousels';
+
 import ListProducts from '../components/views/homepage/ListProductCard';
 import HightLight from '../components/views/homepage/HighLight';
 import ListSlideView from '../components/views/homepage/ListSlideView';
 import FeaturedBranch from '../components/views/homepage/FeatureBranch';
 import FooterHomePage from '../components/views/homepage/Footer';
-const MyDynamicComponent = dynamic(() => import('../components/views/homepage/Instagrams'), { ssr: false });
+
+import TrendingCard from '../components/views/homepage/Trending';
+import _ from 'lodash/values';
+
+// const TrendingCard = dynamic(() => import('../components/views/homepage/Trending'))
+// const ListProducts = dynamic(() => import('../components/views/homepage/ListProductCard'))
+// const HightLight = dynamic(() => import('../components/views/homepage/HighLight'))
+// const ListSlideView = dynamic(() => import('../components/views/homepage/ListSlideView'))
+// const FeaturedBranch = dynamic(() => import('../components/views/homepage/FeatureBranch'))
+// const FooterHomePage = dynamic(() => import('../components/views/homepage/Footer'))
+// const Banner = dynamic(() => import('../components/banner/Banner'))
+
 type Props = {
     featured?: any;
     banners?: any;
@@ -30,77 +35,36 @@ type Props = {
     homepageContent?: any
     bestSeller?: any
     recommend?: any
+    homepageContentData: any
+    listArraivel: any
+    listBanner: any
+    bannerHighlight: any
+    flashSaleHighlight: any
+    homepageFooterData: any
 };
 
-const IndexPage = ({ carousels, events, deals, banners, homepageContent, recommend, bestSeller }: Props) => {
-    const homepageContentData = _.values(homepageContent?.homepage_content)
-    const homepageFooterData = _.values(homepageContent?.footer)
-    const listContent = homepageContentData?.filter((x: any) => {
-        return x?.id === "Y12VF8Q9" || x?.id === "qq1ON/UD"
-    })
-    const listArraivel = homepageContentData?.filter((x: any) => {
-        return x?.id === "YferTLSC" || x?.id === "jGekaT+o"
-    })?.map((x: any, i: any) => { return { ...x, textContent: listContent[+i]?.props?.values?.text } })
-
-    const listBanner = homepageContentData?.filter((x: any) => {
-        return x?.id === "4g+Chi4C"
-    })
-    const bannerHighlight = homepageContentData?.filter((x: any) => {
-        return x?.id === "81QE/qtW"
-    })
-    const flashSaleHighlight = homepageContentData?.filter((x: any) => {
-        return x?.id === "KpVRNCGX"
-    })
-
-
-    console.log("listBanner", homepageContent)
-    console.log("recommend", recommend)
+const IndexPage = ({ carousels, flashSaleHighlight, homepageFooterData, listArraivel, listBanner, bannerHighlight, recommend, bestSeller, homepageContentData }: Props) => {
 
 
     return (
         <>
-            <NextSeo
-                title="Home"
-                description="This is homepage "
-                canonical="https://www.canonicalurl.ie/"
-                openGraph={{
-                    url: 'https://www.canonicalurl.ie/',
-                    title: 'Home',
-                    description: 'This is homepage',
-                    images: [
-                        {
-                            url: '/logoPlayrightIT.PNG',
-                            width: 800,
-                            height: 600,
-                            alt: 'Og Image Alt',
-                        },
-                        {
-                            url: '/logoPlayrightIT.PNG',
-                            width: 900,
-                            height: 800,
-                            alt: 'Og Image Alt Second',
-                        },
-                        { url: '/logoPlayrightIT.PNG' },
-                        { url: '/logoPlayrightIT.PNG' },
-                    ],
-                }}
-            />
 
             <TrendingCard carousels={carousels} homepageContentData={homepageContentData} />
 
-            <Box px={{ base: '.6em', md: '1.2em' }}>
+            <Box px={{ base: '.6em', md: '2em' }} maxWidth={{ base: '100%', md: '1200px' }} marginX={"auto"}>
                 <>
+
                     {listArraivel?.length > 0 ? <ListEvents events={listArraivel} /> : null}
 
-                    <Box display={{ base: 'none', lg: 'flex' }}>
+                    {/* <Box display={{ base: 'none', lg: 'flex' }}>
                         <Banner
-                            mt={{ base: '20px', lg: '50px' }}
+                            mt={{ base: '20px', lg: '10px' }}
                             pl={{ base: '0px', lg: '60px' }}
                             pr={{ base: '0px', lg: '60px' }}
                             banner={{ url: listBanner[0]?.props?.values?.imageUrl?.url }}
 
                         />
-                    </Box>
+                    </Box> */}
                     <Box display={{ base: 'flex', lg: 'none' }}>
                         <Banner
                             mt={{ base: '20px', lg: '50px' }}
@@ -120,7 +84,7 @@ const IndexPage = ({ carousels, events, deals, banners, homepageContent, recomme
             </Box>
             <FooterHomePage homeContent={homepageFooterData} />
 
-            {/* <ComingSoon /> */}
+
         </>
     );
 };
@@ -128,17 +92,67 @@ const IndexPage = ({ carousels, events, deals, banners, homepageContent, recomme
 export const getStaticProps: GetStaticProps = async (context: any) => {
     try {
 
-        let homepageContent = await useGetHomePage()
-        let bestSeller = await useGetProductByCollection(10)
-        let recommend = await useGetProductByCollection(13)
+        let homepageContent = useGetHomePage()
+        let bestSeller = useGetProductByCollection(10)
+        let recommend = useGetProductByCollection(13)
 
+        let result = await Promise.all([homepageContent, bestSeller, recommend])
 
+        const listContent = []
+        const listArraivel = []
+        const listBanner = []
+        const bannerHighlight = []
+        const flashSaleHighlight = []
+
+        const homepageContentData = _(result[0]?.homepage_content)
+
+        const homepageFooterData = _(result[0]?.footer)
+
+        for (let index = 0; index < homepageContentData.length; index++) {
+            const element = homepageContentData[index];
+            if (element?.id === "Y12VF8Q9" || element?.id === "qq1ON/UD") {
+                listContent.push(element)
+            } else if (element?.id === "YferTLSC" || element?.id === "jGekaT+o") {
+                listArraivel.push(element)
+            } else if (element?.id === "4g+Chi4C") {
+                listBanner.push(element)
+
+            } else if (element?.id === "81QE/qtW") {
+                bannerHighlight.push(element)
+
+            } else if (element?.id === "KpVRNCGX") {
+                flashSaleHighlight.push(element)
+            }
+
+        }
+
+        // const listContent = homepageContentData?.filter((x: any) => {
+        //     return x?.id === "Y12VF8Q9" || x?.id === "qq1ON/UD"
+        // })
+        // const listArraivel = homepageContentData?.filter((x: any) => {
+        //     return x?.id === "YferTLSC" || x?.id === "jGekaT+o"
+        // })?.map((x: any, i: any) => { return { ...x, textContent: listContent[+i]?.props?.values?.text } })
+
+        // const listBanner = homepageContentData?.filter((x: any) => {
+        //     return x?.id === "4g+Chi4C"
+        // })
+        // const bannerHighlight = homepageContentData?.filter((x: any) => {
+        //     return x?.id === "81QE/qtW"
+        // })
+        // const flashSaleHighlight = homepageContentData?.filter((x: any) => {
+        //     return x?.id === "KpVRNCGX"
+        // })
         return {
             props: {
 
-                homepageContent: homepageContent,
-                bestSeller: bestSeller,
-                recommend: recommend
+                homepageContentData: homepageContentData,
+                homepageFooterData: homepageFooterData,
+                listArraivel: listArraivel?.map((x: any, i: any) => { return { ...x, textContent: listContent[+i]?.props?.values?.text } }),
+                listBanner: listBanner,
+                bannerHighlight: bannerHighlight,
+                flashSaleHighlight: flashSaleHighlight,
+                bestSeller: result[1],
+                recommend: result[2]
             },
             revalidate: 60,
         };

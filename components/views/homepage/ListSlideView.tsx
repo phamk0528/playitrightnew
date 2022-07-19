@@ -1,5 +1,5 @@
 import { Box, Icon, Text } from '@chakra-ui/react';
-import React,   from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import useColorTheme from '../../../hooks/useColorTheme';
 
@@ -86,7 +86,7 @@ const ListSlideView = ({ homepageContentData, }: Props) => {
             ? {
                 dots: true,
                 infinite: true,
-                slidesToShow: 1,
+                slidesToShow: 6,
                 slidesToScroll: 1,
                 autoplay: true,
                 arrows: true,
@@ -117,8 +117,8 @@ const ListSlideView = ({ homepageContentData, }: Props) => {
 
                 <Slider {...settings}>
                     {carousel?.map((slide: any) => (
-                        <Box pt={{ base: '10%', lg: '10%' }} px="3px" key={'listEvent' + slide.hero_mobile.url}>
-                            <Box width="100px" height={"100px"} alignSelf={'center'} mt='15px' marginTop="5px" position='relative'>
+                        <Box pt={{ base: '10%', lg: '10%' }} px="3px" alignItems={'center'} key={'listEvent' + slide.hero_mobile.url}>
+                            <Box width="100px" display={{ base: 'flex', lg: 'none' }} height={"100px"} alignSelf={'center'} mt='15px' marginTop="5px" position='relative'>
                                 <Image
                                     // width="100%"
                                     // height="20vh"
@@ -130,6 +130,17 @@ const ListSlideView = ({ homepageContentData, }: Props) => {
 
                                 />
                             </Box>
+                            <Box width="150px" display={{ base: 'none', lg: 'flex' }} height={"150px"} alignSelf={'center'} mt='15px' marginTop="5px" position='relative'>
+                                <Image
+                                    // width="100%"
+                                    // height="20vh"
+                                    src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=300&quality=90'}
+                                    alt={'Photo of ' + slide.hero_mobile.url}
+                                    objectFit="cover"
+
+                                    layout='fill'
+
+                                /></Box>
                             <Text align={'center'} fontSize="12px" mt="5px"
                                 fontWeight="bold"
                                 textTransform="uppercase"

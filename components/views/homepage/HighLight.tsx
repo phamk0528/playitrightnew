@@ -117,7 +117,7 @@ const HightLight = ({ homepageContentData, banner, flashSaleHighlight }: Props) 
                 <Box
 
                     width="100%"
-                    mt={{ base: '20px', lg: '70px' }}
+                    mt={{ base: '20px', lg: '30px' }}
                     // bgColor="#004C45"
                     alignItems="center"
 
@@ -125,7 +125,7 @@ const HightLight = ({ homepageContentData, banner, flashSaleHighlight }: Props) 
                 >
                     <Heading
                         transition="ease-in 0.15s"
-                        fontSize={{ base: '15px', md: '36px' }}
+                        fontSize={{ base: '15px', md: '20px' }}
                         bottom="30px"
                         textAlign="left"
 
@@ -135,47 +135,91 @@ const HightLight = ({ homepageContentData, banner, flashSaleHighlight }: Props) 
                         Highlights
                     </Heading>
 
-                    <SimpleGrid columns={2} spacing={'10px'} width="100%">
-                        <Box width="100%" h={"20vh"} >
+                    <SimpleGrid columns={2} spacing={'10px'} width="100%" mt="15px">
+                        <Box width="100%" h={{ base: "20vh", md: '52vh' }} >
                             <Slider {...settings}>
                                 {carousel?.map((slide: any) => (
-                                    <Box width="100%" h={"20vh"} position='relative'>
-                                        <Image
-                                            width="100%"
-                                            height="20vh"
-                                            src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
-                                            alt={'Photo of ' + slide.hero_mobile.url}
+                                    <>
+                                        <Box width="100%" h={"20vh"} display={{ base: 'flex', lg: 'none' }} position='relative'>
+                                            <Image
+                                                width="100%"
+                                                height="20vh"
+                                                src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
+                                                alt={'Photo of ' + slide.hero_mobile.url}
 
-                                            objectFit='cover'
-                                            layout='fill'
-                                        />
-                                    </Box>
+                                                objectFit='cover'
+                                                layout='fill'
+                                            />
+                                        </Box>
+                                        <Box width="100%" h={"52vh"} display={{ base: 'none', lg: 'flex' }} position='relative'>
+                                            <Image
+                                                width="100%"
+                                                height="52vh"
+                                                src={slide.hero_mobile.url.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=500&quality=100'}
+                                                alt={'Photo of ' + slide.hero_mobile.url}
+
+                                                objectFit='cover'
+                                                layout='fill'
+                                            />
+                                        </Box>
+                                    </>
+
+
                                 ))}
                             </Slider>
                         </Box>
-                        <Box width="100%" h={"20vh"} position='relative'>
-                            <Image
-                                width="100%"
-                                height="20vh"
-                                src={flashSaleHighlight.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
-                                alt={'Photo of ' + flashSaleHighlight}
+                        <Box width="100%" h={{ base: "20vh", md: '52vh' }} >
+                            <Box width="100%" h={"52vh"} display={{ base: 'none', lg: 'flex' }} position='relative'>
+                                <Image
+                                    width="100%"
+                                    height="52vh"
+                                    src={flashSaleHighlight.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=500&quality=100'}
+                                    alt={'Photo of ' + flashSaleHighlight}
 
+                                    objectFit='cover'
+                                    layout='fill'
+                                />
+                            </Box>
+                            <Box width="100%" h={"20vh"} display={{ base: 'flex', lg: 'none' }} position='relative'>
+                                <Image
+                                    width="100%"
+                                    height="20vh"
+                                    src={flashSaleHighlight.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=200&quality=90'}
+                                    alt={'Photo of ' + flashSaleHighlight}
+
+                                    objectFit='cover'
+                                    layout='fill'
+                                />
+                            </Box>
+                        </Box>
+                    </SimpleGrid>
+                    <>
+
+                        <Box width="100%" h={"38vh"} position='relative' display={{ base: 'none', lg: 'flex' }} mt="10px">
+                            <Image
+
+                                width="100%"
+                                height="38vh"
+                                src={banner.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=1200&quality=100'}
+                                alt={'Photo of ' + banner}
                                 objectFit='cover'
                                 layout='fill'
                             />
                         </Box>
-                    </SimpleGrid>
-                    <Box width="100%" h={"25vh"} position='relative'>
-                        <Image
 
-                            width="100%"
-                            height="25vh"
-                            src={banner.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=90'}
-                            alt={'Photo of ' + banner}
-                            objectFit='cover'
-                            layout='fill'
-                        />
-                    </Box>
+                        <Box width="100%" h={"20vh"} position='relative' display={{ base: 'flex', lg: 'none' }}>
+                            <Image
+
+                                width="100%"
+                                height="20vh"
+                                src={banner.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=380&quality=90'}
+                                alt={'Photo of ' + banner}
+                                objectFit='cover'
+                                layout='fill'
+                            />
+                        </Box>
+                    </>
+
                 </Box>
             </Box>
         </>

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Box, BoxProps, Text, useBreakpointValue, Icon, Flex } from '@chakra-ui/react';
+import { Box, BoxProps, Text, useBreakpointValue } from '@chakra-ui/react';
 import useColorTheme from '../../hooks/useColorTheme';
-import styles from '../../constants/styles';
+
 import { useRouter } from 'next/router';
 import Image from '../Image';
 import Card from './Card';
-import _ from 'lodash';
-import moment from 'moment';
+
+
 import { getUrlImage } from '../../helpers/commonFuction';
-import { AiFillCalendar } from 'react-icons/ai';
-import Fade from 'react-reveal/Fade';
+
+
 interface Props extends BoxProps {
     article: any;
     column?: boolean;
@@ -46,54 +46,54 @@ const ArticleCard = ({
     };
 
     return (
-        <Fade bottom>
-            <Card
-                onClick={() => onClickEvent()}
-                justifyContent="flex-start"
-                cursor="pointer"
-                onMouseEnter={() => setHover(true)}
-                onMouseLeave={() => setHover(false)}
-                style={{ transform: `scale(${hover ? 1.1 : 1})` }}
-                transition="ease-in 0.2s"
-                overflow="hidden"
-                h="100%"
-                display="flex"
-                {...props}
-                flexDirection={'column'}
-                color={colors.primary}
-            >
-                <Box display={{ base: 'none', lg: 'flex' }}>
-                    <Image
-                        width="100%"
-                        height={{ base: 40, md: 40, lg: 60 }}
-                        src={getUrlImage(article.photos[0].url)}
-                        alt={'Photo of ' + article.article_name}
-                        objectFit="cover"
-                    />
+
+        <Card
+            onClick={() => onClickEvent()}
+            justifyContent="flex-start"
+            cursor="pointer"
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            style={{ transform: `scale(${hover ? 1.1 : 1})` }}
+            transition="ease-in 0.2s"
+            overflow="hidden"
+            h="100%"
+            display="flex"
+            {...props}
+            flexDirection={'column'}
+            color={colors.primary}
+        >
+            <Box display={{ base: 'none', lg: 'flex' }}>
+                <Image
+                    width="100%"
+                    height={{ base: 40, md: 40, lg: 60 }}
+                    src={getUrlImage(article.photos[0].url)}
+                    alt={'Photo of ' + article.article_name}
+                    objectFit="cover"
+                />
+            </Box>
+            <Box display={{ base: 'flex', lg: 'none' }}>
+                <Image
+                    width="100%"
+                    height="22vh"
+                    src={getUrlImage(article.photos[0].url)}
+                    alt={'Photo of ' + article.article_name}
+                    objectFit="cover"
+                />
+            </Box>
+            <Box mt={{ base: 4, md: 4 }} color={colors.primary}>
+                <Box h={heightTitle}>
+                    <Text fontWeight="bold" fontSize="15px" letterSpacing="wide">
+                        {article.art_name}
+                    </Text>
                 </Box>
-                <Box display={{ base: 'flex', lg: 'none' }}>
-                    <Image
-                        width="100%"
-                        height="22vh"
-                        src={getUrlImage(article.photos[0].url)}
-                        alt={'Photo of ' + article.article_name}
-                        objectFit="cover"
-                    />
+                <Box>
+                    <Text fontSize="15px" letterSpacing="wide">
+                        {article.artist_name}
+                    </Text>
                 </Box>
-                <Box mt={{ base: 4, md: 4 }} color={colors.primary}>
-                    <Box h={heightTitle}>
-                        <Text fontWeight="bold" fontSize="15px" letterSpacing="wide">
-                            {article.art_name}
-                        </Text>
-                    </Box>
-                    <Box>
-                        <Text fontSize="15px" letterSpacing="wide">
-                            {article.artist_name}
-                        </Text>
-                    </Box>
-                </Box>
-            </Card>
-        </Fade>
+            </Box>
+        </Card>
+
     );
 };
 

@@ -23,7 +23,7 @@ export const useGetHomePage = async () => {
                 Referer: 'https://playitright.com/',
             },
         });
-        console.log('statusCode-Carousel:', data);
+
         return await data.json();
     } catch (error) {
         console.log('error', error);
@@ -38,7 +38,7 @@ export const useGetProductByCollection = async (id: number) => {
                 Referer: 'https://playitright.com/',
             },
         });
-        console.log('statusCode-Carousel:', data);
+
         return await data.json();
     } catch (error) {
         console.log('error', error);

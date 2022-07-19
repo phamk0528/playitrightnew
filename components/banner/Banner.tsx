@@ -34,14 +34,11 @@ const Banner = ({
     base: "column",
     md: column ? "column" : "row",
   });
-  const onClickEvent = () => {
-    window.open(url, "_blank");
-  };
 
 
   return (
     <Card
-      onClick={() => url ? onClickEvent() : console.log('No URL')}
+
       justifyContent="flex-start"
       cursor="pointer"
       overflow="hidden"
@@ -52,16 +49,31 @@ const Banner = ({
       color={colors.primary}
       w="100%"
     >
-      <Box w="100%" h="30vh" position='relative'>
+      <Box w="100%" h="38vh" position='relative' display={{ base: 'none', lg: 'flex' }} >
         <Image
           width="100%"
-          height={"30vh"}
+          height={"38vh"}
           objectFit='contain'
           layout='fill'
           // w="100%"
 
           alt='banner'
-          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=400&quality=90')}
+          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=1200&quality=100')}
+
+        // objectFit="cover"
+        />
+      </Box>
+
+      <Box w="100%" h="20vh" position='relative' display={{ base: 'flex', lg: 'none' }} >
+        <Image
+          width="100%"
+          height={"30vh"}
+          objectFit='cover'
+          layout='fill'
+          // w="100%"
+
+          alt='banner'
+          src={getUrlImage(banner?.url?.replace('https://playitright.s3-ap-southeast-1.amazonaws.com/', 'https://quocbcx-1c878.kxcdn.com/') + '?width=350&quality=90')}
 
         // objectFit="cover"
         />
